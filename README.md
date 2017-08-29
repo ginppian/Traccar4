@@ -469,7 +469,9 @@ y refrescamos el navegador. Podemos hacer *log out* e iniciar sesión con otra c
 ## Otros
 
 * <a href="https://www.youtube.com/watch?v=vnpRx0pkSsc">Where to change the google map api key? </a>
-
+* <a href="https://www.traccar.org/forums/topic/custom-web-interface/">Traccar - Custom Web Interface</a>
+* <a href="http://traccar.litvak.su/installation.html">Fork Traccar</a>
+* <a href="https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04">DigitalOcean - How To Install MySQL on Ubuntu 16.04</a>
 
 
 
