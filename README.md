@@ -74,7 +74,7 @@ y ya podremos acceder con nuestro nuevo usuario.
 
 *Consultar Fuente 1*
 
-* Apache
+### Apache
 
 ```
 sudo apt-get update
@@ -132,6 +132,38 @@ y podemos ver una imágen así:
 <p align="center">
 	<img src="https://github.com/ginppian/Traccar4/blob/master/imgs/apache_default.png" width="372" height="517">
 </p>
+
+*If you see this page, then your web server is now correctly installed and accessible through your firewall*
+
+### MySQL
+
+Nos pedirá una contraseña.
+
+```
+sudo apt-get install mysql-server
+```
+
+Instalamos MySQL de forma segura con el siguiente comando: 
+
+```
+mysql_secure_installation
+```
+
+* Nivel Password
+* Cambiar password para usuario Root
+* Remover usuarios anonimos
+* Desabilitar el login de Root de manera remota
+* Remover Base de Datos de pruebas
+* Refrescar los privilegios de las tablas ahora
+
+Yo en todos le doy *Y* (YES) y la contraseña le dejo la misma. Si le das en una contraseña muy segura, tal vez tengas que cambiar la.
+
+### PHP
+
+
+
+
+
 
 
 
