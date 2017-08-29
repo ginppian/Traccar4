@@ -1,6 +1,10 @@
 Traccar con MySQL 
 ===========
 
+<p align="center">
+	<img src="https://github.com/ginppian/Traccar4/blob/master/imgs/traccar.png" width="682" height="331">
+</p>
+
 ## Definición
 
 <p align="justify">
