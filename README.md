@@ -453,9 +453,20 @@ y refrescamos el navegador. Podemos hacer *log out* e iniciar sesión con otra c
 
 5. <a href="https://www.traccar.org/forums/topic/my-service-stops-java-heap/">Traccar - My service stops - JAVA Heap</a>
 
-6. <a href="https://www.traccar.org/forums/topic/google-map-layer/"></a>
+6. <a href="https://github.com/tananaev/traccar/issues/1293#issuecomment-121156068">Traccar - Update from 2.x to 3.0 migrate all data</a>
 
-7. <a href="https://www.traccar.org/forums/topic/google-maps-road-satellite/">Google Maps Road + Satellite</a>
+7. <a href="https://www.traccar.org/map-layers/">Offical Traccar Map Layers</a>
+
+8. <a href="https://www.traccar.org/forums/topic/google-map-layer/">Traccar - Google Map Layer</a>
+
+9. <a href="https://www.traccar.org/forums/topic/google-maps-road-satellite/">Google Maps Road + Satellite</a>
+
+
+## Otros
+
+* <a href="https://www.youtube.com/watch?v=vnpRx0pkSsc">Where to change the google map api key? </a>
+
+
 
 
 
