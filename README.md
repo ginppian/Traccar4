@@ -233,7 +233,7 @@ http://your_server_IP_address/info.php
 Si vemos algo como esta imagen todo SALIO BIEN.
 
 <p align="center">
-	<img src="" width="" height="">
+	<img src="https://github.com/ginppian/Traccar4/blob/master/imgs/php_info.png" width="372" height="320">
 </p>
 
 4. Instalamos PHPMyAdmin
