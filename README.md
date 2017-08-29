@@ -130,7 +130,7 @@ http://your_server_IP_address
 y podemos ver una imágen así:
 
 <p align="center">
-	<img src="" width="372" height="517">
+	<img src="https://github.com/ginppian/Traccar4/blob/master/imgs/apache_default.png" width="372" height="517">
 </p>
 
 
