@@ -438,12 +438,162 @@ http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga
 y refrescamos el navegador. Podemos hacer *log out* e iniciar sesión con otra cuenta.
 
 
+7. Aplicación
 
+El código que usamos en el momento de que se vea este tutorial estará antiguo de todas formas lo anexamos en el proyecto, si se quiere descargar el nuevo código podremos hacer lo desde <a href="https://github.com/tananaev/traccar-client-android">aquí</a>.
 
+* Visible para el usuario. 
 
+Buscamos este sección de código:
 
+```java
+if (BuildConfig.HIDDEN_APP) {
+	removeLauncherIcon();
+}
+```
 
+y lo comentamos:
 
+```java
+if (BuildConfig.HIDDEN_APP) {
+	//removeLauncherIcon();
+}
+```
+
+de esta manera permitiremos que la aplicación sea visible para el usuario.
+
+* Habilitar/Deshabilitar Edición
+
+Para que el usuario de la aplicación pueda editar las opciones, Traccar usa esta función:
+
+```java
+    private void setPreferencesEnabled(boolean enabled) {
+        findPreference(KEY_DEVICE).setEnabled(enabled);
+        findPreference(KEY_URL).setEnabled(enabled);
+        findPreference(KEY_INTERVAL).setEnabled(enabled);
+        findPreference(KEY_DISTANCE).setEnabled(enabled);
+        findPreference(KEY_ANGLE).setEnabled(enabled);
+        findPreference(KEY_PROVIDER).setEnabled(enabled);
+    }
+```
+
+entonces si queremos nos otros configurar las y después que el usuario ya no pueda configurarlas, tenemos que modificar esa función.
+
+En el método *onCreate* que es el primero que se carga, hasta el final agregamos la siguiente función. Esta función pregunt, si es la primera vez que se abre el app. Si es la primera vez nos otros como administradores podremos editar la con los campos correspondientes a nuestro servidor, sino es la primera vez que se ejecuta, deshabilitaremos la edición para el usuario:
+
+```
+        final String PREFS_NAME = "MyPrefsFile";
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (settings.getBoolean("my_first_time", true)) {
+            //the app is being launched for first time, do something
+            Log.d("Comments", "First time");
+
+            // first time task
+
+            // record the fact that the app has been started at least once
+            settings.edit().putBoolean("my_first_time", false).commit();
+        } else {
+
+            setPreferencesEnabled(false);
+        }
+```
+
+También la ocultaremos cuando se detiene el servicio (stopTrackingService) y cuando empieza el servicio (startTrackingService):
+
+```
+    private void startTrackingService(boolean checkPermission, boolean permission) {
+        if (checkPermission) {
+            Set<String> missingPermissions = new HashSet<>();
+            if (!hasPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                missingPermissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            }
+            if (!hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                missingPermissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            }
+            if (missingPermissions.isEmpty()) {
+                permission = true;
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(missingPermissions.toArray(new String[missingPermissions.size()]),
+                            PERMISSIONS_REQUEST_LOCATION);
+                }
+                return;
+            }
+        }
+
+        if (permission) {
+            //ginppian
+            setPreferencesEnabled(false);
+            startService(new Intent(this, TrackingService.class));
+            alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    15000, 15000, alarmIntent);
+        } else {
+            //ginppian
+            setPreferencesEnabled(false);
+            sharedPreferences.edit().putBoolean(KEY_STATUS, false).commit();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                TwoStatePreference preference = (TwoStatePreference) findPreference(KEY_STATUS);
+                preference.setChecked(false);
+            } else {
+                CheckBoxPreference preference = (CheckBoxPreference) findPreference(KEY_STATUS);
+                preference.setChecked(false);
+            }
+        }
+    }
+
+    private void stopTrackingService() {
+        alarmManager.cancel(alarmIntent);
+        stopService(new Intent(this, TrackingService.class));
+        //ginppian
+        //setPreferencesEnabled(true);
+        setPreferencesEnabled(false);
+
+    }
+```
+
+De esta menera nos otros únicamente podremos editar las configuraciones la primera vez.
+
+* Vista
+
+Cambiamos el nombre del app:
+
+```
+En la carpeta res>values>strings>mx, 
+	app_name: myName
+	hidden_app_name: myName
+```
+
+Cambiar los íconos con unos que nos provee *Android Studio*:
+
+```
+Android Studio Help > Find Action > image > Image Assets 
+```
+
+Editamos nuestra imagen y al guardar le damos:
+
+```
+Res Directory > hidden
+```
+
+Así sobre escribirá los íconos. Hidden es el nombre de nuestra carpeta si es diferente deberiamos escoger el correspondiente.
+
+Para cambiar los colores:
+
+```
+res > values > colors.xml
+```
+
+modificamos los valores:
+
+```
+    <color name="primary">#E91E63</color>
+    <color name="primary_dark">#C2185B</color>
+    <color name="accent">#E040FB</color>
+```
+
+si queremos una referencia de colores usar, podemos echar un vistazo en <a href="https://www.materialpalette.com/">material palette</a>.
 
 ## Fuentes
 
@@ -464,6 +614,11 @@ y refrescamos el navegador. Podemos hacer *log out* e iniciar sesión con otra c
 8. <a href="https://www.traccar.org/forums/topic/google-map-layer/">Traccar - Google Map Layer</a>
 
 9. <a href="https://www.traccar.org/forums/topic/google-maps-road-satellite/">Google Maps Road + Satellite</a>
+
+10. <a href="https://developer.android.com/studio/write/image-asset-studio.html?hl=es-419#access">Ejecución de Image Asset Studio</a>
+
+11. <a href="https://stackoverflow.com/questions/4636141/determine-if-android-app-is-the-first-time-used">Determine if android app is the first time used</a>
+
 
 
 ## Otros
