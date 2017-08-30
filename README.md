@@ -620,7 +620,6 @@ si queremos una referencia de colores usar, podemos echar un vistazo en <a href=
 11. <a href="https://stackoverflow.com/questions/4636141/determine-if-android-app-is-the-first-time-used">Determine if android app is the first time used</a>
 
 
-
 ## Otros
 
 * <a href="https://www.youtube.com/watch?v=vnpRx0pkSsc">Where to change the google map api key? </a>
