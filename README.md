@@ -427,6 +427,13 @@ UPDATE users SET salt='000000000000000000000000000000000000000000000000' WHERE i
 
 o podemos hacer lo directo desde *PHPMyAdmin*, modificando directamente la tabla *users* dandole en editar.
 
+Ahora accedemos a Tracca como administrador:
+
+```
+User: admin
+Pass: password
+```
+
 * En el ícono de gradiente (arriba a la derecha) o nuestras preferencias damos clic
 * En el cuadro de texto de hasta arriba llamado *Capa de Mapa* seleccionamos *Mapa Personalizado*
 * En el cuadro de texto *Mapa Personalizado* pegamos la siguiente *URL*:
