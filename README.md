@@ -54,6 +54,7 @@ usermod -aG sudo ginppian
 * agregamos la llave *ssh*, esta la podemos obtener de nuestra máquina (cd ~, cd .ssh, cat id_rsa.pub) o desde nuestro VPS:
 
 ```
+su ginppian
 cd ~
 mkdir .ssh
 sudo cat /root/.ssh/authorized_keys > ~/.ssh/authorized_keys
@@ -282,7 +283,7 @@ Entrando a la liga:
 
 
 ```
-`http://my_ip_sever/phpmyadmin
+http://my_ip_sever/phpmyadmin
 ```
 
 User: root
