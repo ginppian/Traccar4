@@ -154,6 +154,13 @@ Instalamos MySQL de forma segura con el siguiente comando:
 mysql_secure_installation
 ```
 
+o
+
+```
+sudo mysql_secure_installation
+```
+
+
 * Nivel Password
 * Cambiar password para usuario Root
 * Remover usuarios anonimos
@@ -168,6 +175,8 @@ Yo en todos le doy *Y* (YES) y la contraseña le dejo la misma. Si le das en una
 ```
 sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
 ```
+
+puede que mcrypt este desactualizado. Seguir el siguiente <a href="https://askubuntu.com/questions/1031921/php-mcrypt-package-missing-in-ubuntu-server-18-04-lts">tutorial</a>.
 
 *In most cases, we'll want to modify the way that Apache serves files when a directory is requested. Currently, if a user requests a directory from the server, Apache will first look for a file called index.html. We want to tell our web server to prefer PHP files, so we'll make Apache look for an index.php file first.*
 
@@ -259,7 +268,7 @@ sudo apt-get install phpmyadmin apache2-utils
 
 Después que la instalación se ha completado agregamos phpMyAdmin a la configuración de Apache.
 
-Editamos el siguiente archiovo:
+Editamos el siguiente archivo:
 
 ```
 sudo nano /etc/apache2/apache2.conf
@@ -355,6 +364,12 @@ sudo /opt/traccar/bin/stopDaemon.sh
 ```
 
 abrimos *phpMyAdmin* y nos logueamos para crear una nueva Base de Datos:
+
+
+```
+> sudo mysql -u root
+> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '*****_mi_nueva_pass_*****';
+```
 
 * Nueva
 * Ponemos nombre a la Base de Datos
